@@ -1,0 +1,89 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "price": {
+      "type": "float",
+      "required": true
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "stock": {
+      "type": "integer",
+      "required": true
+    },
+    "discount": {
+      "type": "float",
+      "required": false
+    },
+    "rating": {
+      "type": "integer",
+      "required": true,
+      "default": 1,
+      "max": 5,
+      "min": 1
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "statuses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::status.status",
+      "inversedBy": "products"
+    },
+    "sizes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::size.size",
+      "mappedBy": "products"
+    },
+    "styles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::style.style",
+      "mappedBy": "products"
+    },
+    "color": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::color.color",
+      "inversedBy": "products"
+    },
+    "images": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}
